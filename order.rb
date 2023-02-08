@@ -15,5 +15,16 @@ orders = []
 1.upto(5) do |n|
   orders << Order.new("customer#{n}@example.com", n * 10)
 end
+# puts orders
 
-puts orders
+puts "Newsletter emails:"
+orders.each { |o| puts o.email }
+
+sum = 0
+orders.each { |o| sum += o.total }
+puts "Total sales: $#{sum}"
+
+taxes = { "CO" => 0.02, "MT" => 0.0, "AZ" => 0.04 }
+taxes.each do |key, value|
+  puts "Key: #{key}, value: #{value * 100}%"
+end
