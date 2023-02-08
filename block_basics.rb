@@ -1,1 +1,1 @@
-puts "Let's start mastering Ruby blocks!"
+1.upto(3) { |n| puts "#{n} Echo!" }
