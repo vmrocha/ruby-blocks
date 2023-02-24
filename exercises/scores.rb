@@ -15,3 +15,15 @@ puts any_low_score
 puts "Score less than 70?"
 score_less_than_70 = scores.detect { |score| score < 70 }
 puts score_less_than_70
+
+scores_doubled = scores.map { |score| score * 2 }
+p scores_doubled
+
+total_scores = scores.reduce(:+)
+puts total_scores
+
+evens, odds = scores.partition { |score| score.even? }
+puts "Even scores:"
+p evens
+puts "Odd scores:"
+p odds

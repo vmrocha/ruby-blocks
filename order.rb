@@ -50,3 +50,32 @@ puts pending_orders
 puts "Completed orders:"
 completed_orders = orders.select { |o| o.status == :completed }
 puts completed_orders
+
+pending_orders, completed_orders = orders.partition { |o| o.status == :pending }
+puts "Pending orders:"
+puts pending_orders
+puts "Completed orders:"
+puts completed_orders
+
+big_orders, small_orders = orders.partition { |o| o.total >= 300 }
+puts "Big orders:"
+puts big_orders
+puts "Small orders:"
+puts small_orders
+
+puts "Newsletter emails:"
+# emails = []
+# orders.each { |o| emails << o.email.downcase }
+emails = orders.map { |o| o.email.downcase }
+p emails
+
+puts "Taxes:"
+co_taxes = orders.select { |o| o.state == "CO" }.map { |o| o.tax }
+p co_taxes
+
+sum = orders.reduce(0) { |sum, o| sum + o.total }
+puts "Total orders: $#{sum}"
+
+# total_tax = orders.reduce(0) { |sum, o| sum + o.tax }
+total_tax = orders.map { |o| o.tax }.reduce(:+)
+puts "Total tax: $#{total_tax}"
